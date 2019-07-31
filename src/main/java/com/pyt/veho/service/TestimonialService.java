@@ -1,69 +1,44 @@
 package com.pyt.veho.service;
 
-import com.pyt.veho.controller.*;
-import com.pyt.veho.model.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.pyt.veho.dao.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.pyt.veho.model.Testimonial;
 
 @Service
 public class TestimonialService {
 	
-	@Autowired
-	private TestimonialDAO testimonialDAO;
-	
-	
-	private List<Testimonial> testimonial = new ArrayList<>(Arrays.asList(
-			new Testimonial("1","Sayee","Saran","Chennai","Dubai"),
-			new Testimonial("2","Sai","Sanjay","Chennai","Dubai"),
-			new Testimonial("3","Gowtham","S","Chennai","Dubai"),
-			new Testimonial("4","Kuzhali","S","Chennai","Dubai")
-			));
+	private List<Testimonial> testimonials = new ArrayList<>(Arrays.asList(
+			new Testimonial(1, "5a2b92b94065d117076a2d3a", "Gowtham", "", "", Arrays.asList("Photo_one", "Photo_two")),
+			new Testimonial(2, "5a2b92b94065d117076a2d3b", "Shan", "", "", Arrays.asList("Photo_one", "Photo_two")),
+			new Testimonial(3, "5a2b92b94065d117076a2d3c", "Saran", "", "", Arrays.asList("Photo_one", "Photo_two")),
+			new Testimonial(4, "5a2b92b94065d117076a2d3d", "Sayee", "", "", Arrays.asList("Photo_one", "Photo_two"))));
 	
 	public List<Testimonial> getTestimonials(){
-		return testimonialDAO.getTestimonial();
+		return this.testimonials;
 	}
 	
-	
-	 
-	 
-	public Testimonial getTestimonial(String id) {
-		return testimonial.stream().filter(t -> t.getItineraryId().equals(id)).findFirst().get();
+	public Testimonial getTestimonial(int id) {
+		Testimonial testimonial = testimonials.stream().filter(t -> t.getTestimonialId() == id).findAny().orElse(null);
+		return testimonial;
 	}
 	
-	
-
-	public void addTestimonial(Testimonial newtestimonial) {
-		// TODO Auto-generated method stub
-		testimonialDAO.createTestimonial(newtestimonial);
-		
+	public void newTestimonial(Testimonial testimonial) {
+		testimonials.add(testimonial);
 	}
 	
-	/*
-	 
-	 
-
-	public void updateTestimonial(Testimonial updatetestimonial, String id) {
-		// TODO Auto-generated method stub
-		
-		for(int i=0;i<testimonial.size();i++ ) {
-			Testimonial t = testimonial.get(i);
-			if(t.getItineraryId().equals(id)) {
-				testimonial.set(i, updatetestimonial);
-				return;
+	public void editTestimonial(Testimonial testimonial,int id) {
+		for(Testimonial t : testimonials) {
+			if(t.getTestimonialId() == id) {
+				testimonials.set(testimonials.indexOf(t), testimonial);
 			}
 		}
-		
 	}
-
-	public void deleteTestimonial(String id) {
-		// TODO Auto-generated method stub
-		testimonial.removeIf(t -> t.getItineraryId().equals(id));
-		
-	}
-	*/
+	 public void deleteTestimonial(int id) {
+		 testimonials.removeIf(t -> t.getTestimonialId() == id);
+	 }
 }
