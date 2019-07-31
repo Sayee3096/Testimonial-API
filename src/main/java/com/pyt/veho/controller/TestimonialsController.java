@@ -29,16 +29,19 @@ public class TestimonialsController {
 		return testimonialService.getTestimonials();
 	}
 	
+	/*
 	@GetMapping(GET_SINGLE_TESTIMONIAL)
 	public Testimonial getTestimonial(@PathVariable int id) {
 		return testimonialService.getTestimonial(id);
 	}
+	*/
 	
 	@PostMapping(BASE_URL)
 	public void newTestimonial(@RequestBody Testimonial testimonial) {
 		testimonialService.newTestimonial(testimonial);
 	}
-
+	
+	/*
 	@PutMapping(EDIT_TESTIMONIAL)
 	public void editTestimonial(@RequestBody Testimonial testimonial,@PathVariable int id) {
 		testimonialService.editTestimonial(testimonial, id);
@@ -47,5 +50,6 @@ public class TestimonialsController {
 	public void deleteTestimonial(@PathVariable int id) {
 		testimonialService.deleteTestimonial(id);
 	}
+	*/
 
 }
