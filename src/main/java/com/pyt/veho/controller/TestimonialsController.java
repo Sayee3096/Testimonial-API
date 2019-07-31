@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class testimonialController {
-	
+public class TestimonialsController {
+	private final String BASE_URL = "/testimonials";
+	private final String GET_SINGLE_TESTIMONIAL = BASE_URL + "/{id}";
+	private final String EDIT_TESTIMONIAL = BASE_URL + "/{id}";
+	private final String DELETE_TESTIMONIAL = BASE_URL + "/{id}";
 	
 	@Autowired
-	private testimonialService testService;
+	private TestimonialsService testService;
 	
 	@GetMapping("/testimonial")
 	public List<Testimonial> getTestimonials(){

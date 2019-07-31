@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class testimonialService {
+public class TestimonialService {
 	
 	@Autowired
 	private TestimonialDAO testimonialDAO;
@@ -28,14 +28,14 @@ public class testimonialService {
 		return testimonialDAO.getTestimonial();
 	}
 	
-	/*
+	
 	 
 	 
 	public Testimonial getTestimonial(String id) {
 		return testimonial.stream().filter(t -> t.getItineraryId().equals(id)).findFirst().get();
 	}
 	
-	*/
+	
 
 	public void addTestimonial(Testimonial newtestimonial) {
 		// TODO Auto-generated method stub
