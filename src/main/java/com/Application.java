@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan({"com.pyt.veho.application", "com.pyt.veho.controller", "com.pyt.veho.Dao", "com.pyt.veho.Model", "com.pyt.veho.service"})
+@ComponentScan({"com.pyt.veho.application", "com.pyt.veho.controller", "com.pyt.veho.Dao", "com.pyt.veho.Model", "com.pyt.veho.service",
+	"com.pyt.veho.constants"})
 public class Application {
 
 	public static void main(String[] args) {

@@ -3,19 +3,26 @@ package com.pyt.veho.model;
 
 import java.util.*;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import com.pyt.veho.constants.TripType;
 
+@Document(collection = "Testimonial")
 public class Testimonial {
 	
-	
-	private int testimonialId;
+	@Id
+	private String testimonialId;
 	private String itineraryId;
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private String DEP_DATE;
-	private String DEP_CITY;
-	private String star;
-	private String timeOfReview;
+	@Field("DEP_DATE")
+	private long dateOfDeparture;
+	@Field("DEP_CITY")
+	private String departureCity;
+	private float star;
+	private long timeOfReview;
 	private String shortReview;
 	private String shortestReview;
 	private String longReview;
@@ -24,35 +31,40 @@ public class Testimonial {
 	private String profileImage;
 	private String coverImage;
 	private String region;
+	@Field("Dest")
 	private String destination;
-	private String ttype;
-	private boolean pdf =false;
-	private String soemail;
+	@Field("T_Type")
+	private TripType tripType;
+	private boolean pdf;
+	@Field("soemail")
+	private String salesOwnerEmail;
+	@Field("jrnllnks")
 	private List<String> journalLinks;
+	@Field("tstmlptos")
 	private List<String> testimonialPhotos;
 	private boolean isSOTagged;
 	private int coverImageWidth;
 	private int coverImageHeight;
 	private boolean centreFaceCroppedCoverImage;
 	
-	
-	public Testimonial() {
+	public Testimonial(){
+		
 	}
 	
-	public Testimonial(int testimonialId, String itineraryId, String firstName, String middleName, String lastName,
-			String dEP_DATE, String dEP_CITY, String star, String timeOfReview, String shortReview,
+	public Testimonial(String testimonialId, String itineraryId, String firstName, String middleName, String lastName,
+			long dateOfDeparture, String departureCity, float star, long timeOfReview, String shortReview,
 			String shortestReview, String longReview, String review, String facebookLink, String profileImage,
-			String coverImage, String region, String destination, String ttype, boolean pdf, String soemail,
-			List<String> journalLinks, List<String> testimonialPhotos, boolean isSOTagged, int coverImageWidth,
-			int coverImageHeight, boolean centreFaceCroppedCoverImage) {
+			String coverImage, String region, String destination, TripType tripType, boolean pdf,
+			String salesOwnerEmail, List<String> journalLinks, List<String> testimonialPhotos, boolean isSOTagged,
+			int coverImageWidth, int coverImageHeight, boolean centreFaceCroppedCoverImage) {
 		super();
 		this.testimonialId = testimonialId;
 		this.itineraryId = itineraryId;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
-		DEP_DATE = dEP_DATE;
-		DEP_CITY = dEP_CITY;
+		this.dateOfDeparture = dateOfDeparture;
+		this.departureCity = departureCity;
 		this.star = star;
 		this.timeOfReview = timeOfReview;
 		this.shortReview = shortReview;
@@ -64,9 +76,9 @@ public class Testimonial {
 		this.coverImage = coverImage;
 		this.region = region;
 		this.destination = destination;
-		this.ttype = ttype;
+		this.tripType = tripType;
 		this.pdf = pdf;
-		this.soemail = soemail;
+		this.salesOwnerEmail = salesOwnerEmail;
 		this.journalLinks = journalLinks;
 		this.testimonialPhotos = testimonialPhotos;
 		this.isSOTagged = isSOTagged;
@@ -74,172 +86,16 @@ public class Testimonial {
 		this.coverImageHeight = coverImageHeight;
 		this.centreFaceCroppedCoverImage = centreFaceCroppedCoverImage;
 	}
-
-	public String getDEP_DATE() {
-		return DEP_DATE;
+	public TripType getTripType() {
+		return tripType;
 	}
-
-	public void setDEP_DATE(String dEP_DATE) {
-		DEP_DATE = dEP_DATE;
+	public void setTripType(TripType tripType) {
+		this.tripType = tripType;
 	}
-
-	public String getDEP_CITY() {
-		return DEP_CITY;
-	}
-
-	public void setDEP_CITY(String dEP_CITY) {
-		DEP_CITY = dEP_CITY;
-	}
-
-	public String getStar() {
-		return star;
-	}
-
-	public void setStar(String star) {
-		this.star = star;
-	}
-
-	public String getTimeOfReview() {
-		return timeOfReview;
-	}
-
-	public void setTimeOfReview(String timeOfReview) {
-		this.timeOfReview = timeOfReview;
-	}
-
-	public String getShortReview() {
-		return shortReview;
-	}
-
-	public void setShortReview(String shortReview) {
-		this.shortReview = shortReview;
-	}
-
-	public String getShortestReview() {
-		return shortestReview;
-	}
-
-	public void setShortestReview(String shortestReview) {
-		this.shortestReview = shortestReview;
-	}
-
-	public String getLongReview() {
-		return longReview;
-	}
-
-	public void setLongReview(String longReview) {
-		this.longReview = longReview;
-	}
-
-	public String getReview() {
-		return review;
-	}
-
-	public void setReview(String review) {
-		this.review = review;
-	}
-
-	public String getFacebookLink() {
-		return facebookLink;
-	}
-
-	public void setFacebookLink(String facebookLink) {
-		this.facebookLink = facebookLink;
-	}
-
-	public String getProfileImage() {
-		return profileImage;
-	}
-
-	public void setProfileImage(String profileImage) {
-		this.profileImage = profileImage;
-	}
-
-	public String getCoverImage() {
-		return coverImage;
-	}
-
-	public void setCoverImage(String coverImage) {
-		this.coverImage = coverImage;
-	}
-
-	public String getRegion() {
-		return region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
-	public String getDestination() {
-		return destination;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-
-	public String getTtype() {
-		return ttype;
-	}
-
-	public void setTtype(String ttype) {
-		this.ttype = ttype;
-	}
-
-	public boolean isPdf() {
-		return pdf;
-	}
-
-	public void setPdf(boolean pdf) {
-		this.pdf = pdf;
-	}
-
-	public String getSoemail() {
-		return soemail;
-	}
-
-	public void setSoemail(String soemail) {
-		this.soemail = soemail;
-	}
-
-	public List<String> getJournalLinks() {
-		return journalLinks;
-	}
-
-	public void setJournalLinks(List<String> journalLinks) {
-		this.journalLinks = journalLinks;
-	}
-
-	public boolean isSOTagged() {
-		return isSOTagged;
-	}
-
-	public void setSOTagged(boolean isSOTagged) {
-		this.isSOTagged = isSOTagged;
-	}
-
-	public int getCoverImageWidth() {
-		return coverImageWidth;
-	}
-
-	public void setCoverImageWidth(int coverImageWidth) {
-		this.coverImageWidth = coverImageWidth;
-	}
-
-	public int getCoverImageHeight() {
-		return coverImageHeight;
-	}
-
-	public void setCoverImageHeight(int coverImageHeight) {
-		this.coverImageHeight = coverImageHeight;
-	}
-
-	
-	public int getTestimonialId() {
+	public String getTestimonialId() {
 		return testimonialId;
 	}
-	public void setTestimonialId(int testimonialId) {
+	public void setTestimonialId(String testimonialId) {
 		this.testimonialId = testimonialId;
 	}
 	public String getItineraryId() {
@@ -266,19 +122,140 @@ public class Testimonial {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public long getDateOfDeparture() {
+		return dateOfDeparture;
+	}
+	public void setDateOfDeparture(long dateOfDeparture) {
+		this.dateOfDeparture = dateOfDeparture;
+	}
+	public String getDepartureCity() {
+		return departureCity;
+	}
+	public void setDepartureCity(String departureCity) {
+		this.departureCity = departureCity;
+	}
+	public float getStar() {
+		return star;
+	}
+	public void setStar(float star) {
+		this.star = star;
+	}
+	public long getTimeOfReview() {
+		return timeOfReview;
+	}
+	public void setTimeOfReview(long timeOfReview) {
+		this.timeOfReview = timeOfReview;
+	}
+	public String getShortReview() {
+		return shortReview;
+	}
+	public void setShortReview(String shortReview) {
+		this.shortReview = shortReview;
+	}
+	public String getShortestReview() {
+		return shortestReview;
+	}
+	public void setShortestReview(String shortestReview) {
+		this.shortestReview = shortestReview;
+	}
+	public String getLongReview() {
+		return longReview;
+	}
+	public void setLongReview(String longReview) {
+		this.longReview = longReview;
+	}
+	public String getReview() {
+		return review;
+	}
+	public void setReview(String review) {
+		this.review = review;
+	}
+	public String getFacebookLink() {
+		return facebookLink;
+	}
+	public void setFacebookLink(String facebookLink) {
+		this.facebookLink = facebookLink;
+	}
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+	public String getCoverImage() {
+		return coverImage;
+	}
+	public void setCoverImage(String coverImage) {
+		this.coverImage = coverImage;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	public TripType getTriptype() {
+		return tripType;
+	}
+	public void setTriptype(TripType tripType) {
+		this.tripType = tripType;
+	}
+	public boolean isPdf() {
+		return pdf;
+	}
+	public void setPdf(boolean pdf) {
+		this.pdf = pdf;
+	}
+	public String getSalesOwnerEmail() {
+		return salesOwnerEmail;
+	}
+	public void setSalesOwnerEmail(String salesOwnerEmail) {
+		this.salesOwnerEmail = salesOwnerEmail;
+	}
+	public List<String> getJournalLinks() {
+		return journalLinks;
+	}
+	public void setJournalLinks(List<String> journalLinks) {
+		this.journalLinks = journalLinks;
+	}
 	public List<String> getTestimonialPhotos() {
 		return testimonialPhotos;
 	}
 	public void setTestimonialPhotos(List<String> testimonialPhotos) {
 		this.testimonialPhotos = testimonialPhotos;
 	}
-
-	@Override
-	public String toString() {
-		return "Testimonial [testimonialId=" + testimonialId + ", itineraryId=" + itineraryId + ", firstName="
-				+ firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", testimonialPhotos="
-				+ testimonialPhotos + "]";
+	public boolean isSOTagged() {
+		return isSOTagged;
+	}
+	public void setSOTagged(boolean isSOTagged) {
+		this.isSOTagged = isSOTagged;
+	}
+	public int getCoverImageWidth() {
+		return coverImageWidth;
+	}
+	public void setCoverImageWidth(int coverImageWidth) {
+		this.coverImageWidth = coverImageWidth;
+	}
+	public int getCoverImageHeight() {
+		return coverImageHeight;
+	}
+	public void setCoverImageHeight(int coverImageHeight) {
+		this.coverImageHeight = coverImageHeight;
+	}
+	public boolean isCentreFaceCroppedCoverImage() {
+		return centreFaceCroppedCoverImage;
+	}
+	public void setCentreFaceCroppedCoverImage(boolean centreFaceCroppedCoverImage) {
+		this.centreFaceCroppedCoverImage = centreFaceCroppedCoverImage;
 	}
 	
-
+	
+	
+	
 }
