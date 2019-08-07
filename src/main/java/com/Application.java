@@ -15,7 +15,7 @@ import com.pyt.veho.controller.TestimonialsController;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan({"com.pyt.veho.application", "com.pyt.veho.controller", "com.pyt.veho.Dao", "com.pyt.veho.Model", "com.pyt.veho.service",
-	"com.pyt.veho.constants"})
+	"com.pyt.veho.constants","com.pyt.veho.exceptionHandler"})
 public class Application {
 	private static final Logger logger = LoggerFactory.getLogger(TestimonialsController.class);
 	public static void main(String[] args) {
