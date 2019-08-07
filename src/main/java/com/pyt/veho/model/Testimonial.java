@@ -1,6 +1,12 @@
 package com.pyt.veho.model;
 
-
+/*
+ * FileName: Testimonial.java
+ * 
+ * Functionality: This is the POJO class for the Testimonial object created. It follows this specific 
+ * template everytime it is called. 
+ * 
+ */
 import java.util.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;

@@ -1,5 +1,12 @@
 package com.pyt.veho.vo;
 
+/*
+ * FileName: TestimonialFilterVO.java
+ * 
+ * Functionality: This is the POJO class for the Testimonial filter object created. It follows this specific 
+ * template everytime the user wants to filter the MongoDB for testimonials. 
+ * 
+ */
 import com.pyt.veho.constants.TripType;
 
 public class TestimonialFilterVO {

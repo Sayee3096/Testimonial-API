@@ -1,5 +1,12 @@
 package com.pyt.veho.exceptionHandler;
 
+/*
+ * FileName: CustomGlobalExceptionHandler.java
+ * 
+ * Functionality: This class is used to override all the Exception methods that arises within the Spring 
+ * Boot application. Currently, the MethodArgumentNotValidException is handled in this class. 
+ * 
+ */
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

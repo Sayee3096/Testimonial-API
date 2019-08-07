@@ -1,6 +1,14 @@
 package com;
 
-
+/*
+ * FileName: Testimonial API Main Class
+ * Version: V1
+ *
+ * Functionality: This class is used for starting the SpringBoot Application which includes all the 
+ * packages inside @ComponentScan.
+ * 
+ * Execution: Run as Java Application
+ */
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
