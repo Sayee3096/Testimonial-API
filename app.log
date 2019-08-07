@@ -1,0 +1,76 @@
+2019-08-07 02:13:42.283  INFO 10772 --- [restartedMain] com.Application                          : Starting Application on apples-mbp with PID 10772 (/Users/apple/Public/Gowtham/Testimonial-API/target/classes started by apple in /Users/apple/Public/Gowtham/Testimonial-API)
+2019-08-07 02:13:42.286  INFO 10772 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-08-07 02:13:42.343  INFO 10772 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-08-07 02:13:42.343  INFO 10772 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-08-07 02:13:42.887  INFO 10772 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-07 02:13:43.815  INFO 10772 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 924ms. Found 0 repository interfaces.
+2019-08-07 02:13:44.352  INFO 10772 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-08-07 02:13:44.381  INFO 10772 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-07 02:13:44.382  INFO 10772 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-08-07 02:13:44.456  INFO 10772 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-07 02:13:44.456  INFO 10772 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2113 ms
+2019-08-07 02:13:44.687  INFO 10772 --- [restartedMain] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-08-07 02:13:44.745  INFO 10772 --- [cluster-ClusterId{value='5d49e680f336f62a14e7340e', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:172}] to localhost:27017
+2019-08-07 02:13:44.751  INFO 10772 --- [cluster-ClusterId{value='5d49e680f336f62a14e7340e', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 3]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3233984}
+2019-08-07 02:13:45.053  INFO 10772 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-07 02:13:45.262  INFO 10772 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-07 02:13:45.448  INFO 10772 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-08-07 02:13:45.453  INFO 10772 --- [restartedMain] com.Application                          : Started Application in 3.562 seconds (JVM running for 3.982)
+2019-08-07 02:13:45.455  INFO 10772 --- [restartedMain] c.p.v.controller.TestimonialsController  : Application Started successfully
+2019-08-07 02:13:54.441  INFO 10772 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-07 02:13:54.441  INFO 10772 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-07 02:13:54.448  INFO 10772 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-08-07 02:13:54.492  INFO 10772 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:173}] to localhost:27017
+2019-08-07 02:14:18.845  INFO 10772 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-08-07 02:14:18.846  INFO 10772 --- [Thread-8] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:173}] to localhost:27017 because the pool has been closed.
+2019-08-07 10:09:43.640  INFO 11388 --- [restartedMain] com.Application                          : Starting Application on APPLEs-MacBook-Pro.local with PID 11388 (/Users/apple/Public/Gowtham/Testimonial-API/target/classes started by apple in /Users/apple/Public/Gowtham/Testimonial-API)
+2019-08-07 10:09:43.644  INFO 11388 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-08-07 10:09:43.709  INFO 11388 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-08-07 10:09:43.710  INFO 11388 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-08-07 10:09:44.325  INFO 11388 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-07 10:09:45.323  INFO 11388 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 992ms. Found 0 repository interfaces.
+2019-08-07 10:09:46.063  INFO 11388 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-08-07 10:09:46.100  INFO 11388 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-07 10:09:46.100  INFO 11388 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-08-07 10:09:46.200  INFO 11388 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-07 10:09:46.200  INFO 11388 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2490 ms
+2019-08-07 10:09:46.530  INFO 11388 --- [restartedMain] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-08-07 10:09:46.753  INFO 11388 --- [cluster-ClusterId{value='5d4a5612f336f62c7c0d5314', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:174}] to localhost:27017
+2019-08-07 10:09:46.758  INFO 11388 --- [cluster-ClusterId{value='5d4a5612f336f62c7c0d5314', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 3]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=2350687}
+2019-08-07 10:09:46.941  INFO 11388 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-07 10:09:47.223  INFO 11388 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-07 10:09:47.437  INFO 11388 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-08-07 10:09:47.442  INFO 11388 --- [restartedMain] com.Application                          : Started Application in 4.257 seconds (JVM running for 4.871)
+2019-08-07 10:09:47.444  INFO 11388 --- [restartedMain] c.p.v.controller.TestimonialsController  : Application Started successfully
+2019-08-07 10:10:31.400  INFO 11388 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-07 10:10:31.401  INFO 11388 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-07 10:10:31.409  INFO 11388 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2019-08-07 10:10:31.550  INFO 11388 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:175}] to localhost:27017
+2019-08-07 10:12:08.870  WARN 11388 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.util.List<com.pyt.veho.model.Testimonial> com.pyt.veho.controller.TestimonialsController.getSortedTestimonials(int,int,com.pyt.veho.vo.TestimonialFilterVO)]
+2019-08-07 10:17:17.835  INFO 11388 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-08-07 10:17:17.836  INFO 11388 --- [Thread-8] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:175}] to localhost:27017 because the pool has been closed.
+2019-08-07 10:17:22.397  INFO 11395 --- [restartedMain] com.Application                          : Starting Application on APPLEs-MacBook-Pro.local with PID 11395 (/Users/apple/Public/Gowtham/Testimonial-API/target/classes started by apple in /Users/apple/Public/Gowtham/Testimonial-API)
+2019-08-07 10:17:22.402  INFO 11395 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-08-07 10:17:22.455  INFO 11395 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-08-07 10:17:22.455  INFO 11395 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-08-07 10:17:23.023  INFO 11395 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-07 10:17:23.958  INFO 11395 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 930ms. Found 0 repository interfaces.
+2019-08-07 10:17:24.489  INFO 11395 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-08-07 10:17:24.525  INFO 11395 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-07 10:17:24.525  INFO 11395 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-08-07 10:17:24.611  INFO 11395 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-07 10:17:24.612  INFO 11395 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2157 ms
+2019-08-07 10:17:24.865  INFO 11395 --- [restartedMain] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-08-07 10:17:24.925  INFO 11395 --- [cluster-ClusterId{value='5d4a57dcf336f62c83d396ce', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:176}] to localhost:27017
+2019-08-07 10:17:24.933  INFO 11395 --- [cluster-ClusterId{value='5d4a57dcf336f62c83d396ce', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 3]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4656947}
+2019-08-07 10:17:25.244  INFO 11395 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-07 10:17:25.481  INFO 11395 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-07 10:17:25.674  INFO 11395 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-08-07 10:17:25.679  INFO 11395 --- [restartedMain] com.Application                          : Started Application in 3.643 seconds (JVM running for 4.075)
+2019-08-07 10:17:25.681  INFO 11395 --- [restartedMain] c.p.v.controller.TestimonialsController  : Application Started successfully
+2019-08-07 10:17:28.742  INFO 11395 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-07 10:17:28.743  INFO 11395 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-07 10:17:28.752  INFO 11395 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2019-08-07 10:17:28.882  INFO 11395 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:177}] to localhost:27017
+2019-08-07 10:19:58.369  INFO 11395 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-08-07 10:19:58.376  INFO 11395 --- [Thread-8] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:177}] to localhost:27017 because the pool has been closed.

@@ -1,15 +1,17 @@
 package com.pyt.veho.vo;
 
+import com.pyt.veho.constants.TripType;
+
 public class TestimonialFilterVO {
 	 	private String dateOfDeparture;
 	    private String departureCity;
 	    private String region;
 	    private String star;
-	    private String tripType;
-	    public String getTripType() {
+	    private TripType tripType;
+	    public TripType getTripType() {
 			return tripType;
 		}
-		public void setTripType(String tripType) {
+		public void setTripType(TripType tripType) {
 			this.tripType = tripType;
 		}
 		public String getDateOfDeparture() {

@@ -14,14 +14,16 @@ import org.springframework.stereotype.Service;
 
 import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.vo.TestimonialFilterVO;
-import com.pyt.veho.constants.GenericResponse;
 import com.pyt.veho.dao.*;
-import com.pyt.veho.constants.*;
+import com.pyt.veho.constants.ConstantFunctions;
+import com.pyt.veho.constants.GenericResponse;
+import com.pyt.veho.constants.GenericResponseStatus;
 @Service
 public class TestimonialService {
 	
 	@Autowired
 	private TestimonialDAO testimonialDao;
+
 	
 	public List<Testimonial> getTestimonials(){
 		return testimonialDao.getTestimonial();
@@ -49,8 +51,7 @@ public class TestimonialService {
 	}
 	*/
 	public void editTestimonial(Map<String , String>  testimonial,String id) {
-		
-		testimonialDao.editTestimonial(testimonial, id);
+			testimonialDao.editTestimonial(testimonial, id);
 	}
 	
 	public List<Testimonial> paginatedTestimonials(int pageNumber,int pageSize){
@@ -62,10 +63,16 @@ public class TestimonialService {
 	        
 	        return testimonialDao.getFilteredTestimonial(testimonialFilterVO);
 	}
-    public void deleteTestimonialById(String id) {
+    
+	public List<Testimonial> getSortedTestimonials(TestimonialFilterVO testimonialFilterVO,int pageNumber,int pageSize, String sortBy) {
+		return testimonialDao.getSortedTestimonials(testimonialFilterVO,pageNumber,pageSize,sortBy);
+	}
+	public void deleteTestimonialById(String id) {
         testimonialDao.deleteTestimonialById(id);
         
     }
+    
+    
 	/*
 	 public void deleteTestimonial(int id) {
 		 testimonials.removeIf(t -> t.getTestimonialId() == id);
