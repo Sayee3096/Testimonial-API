@@ -42,7 +42,7 @@ import com.pyt.veho.vo.TestimonialFilterVO;
 @RestController
 @RequestMapping("/testimonials")
 public class TestimonialsController {
-	private static final Logger logger = LoggerFactory.getLogger(TestimonialsController.class);
+
 	private GenericResponse genericResponse = new GenericResponse();
 	
 	@Autowired
@@ -57,7 +57,7 @@ public class TestimonialsController {
 	 * URL: '/testimonials'
 	 * Request Method: 'GET'
 	 */
-	@GetMapping()
+	@GetMapping
 	public List<Testimonial> getTestimonials(){
 		return testimonialService.getTestimonials();
 	}

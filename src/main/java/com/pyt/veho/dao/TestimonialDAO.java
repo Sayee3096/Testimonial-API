@@ -10,6 +10,7 @@ package com.pyt.veho.dao;
  */
 import com.pyt.veho.constants.GenericResponse;
 import com.pyt.veho.constants.GenericResponseStatus;
+import com.pyt.veho.controller.TestimonialsController;
 import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.vo.TestimonialFilterVO;
 
@@ -20,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +35,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TestimonialDAO {
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(TestimonialsController.class);
 	
 	@Autowired
 	private MongoTemplate mongoTemplate;
@@ -56,6 +59,7 @@ public class TestimonialDAO {
 	*/
 	public void saveTestimonial(Testimonial newtestimonial) {
 		mongoTemplate.insert(newtestimonial);
+		LOGGER.info("POST : "+"New Testimonial Saved successfully");
 	}
 	
 	/*
@@ -67,7 +71,7 @@ public class TestimonialDAO {
 	public Testimonial getTestimonialById(String id) {
 		Query query = new Query(Criteria.where("testimonialId").exists(true));
 		if(!mongoTemplate.exists(query,Testimonial.class)) {
-		
+			LOGGER.info("GET : "+"No record found for the given id ");
 		}
 		return mongoTemplate.findById(id, Testimonial.class);
 	}
@@ -82,6 +86,7 @@ public class TestimonialDAO {
 		Query query = new Query(Criteria.where("testimonialId").is(id));
         List<Testimonial> t = mongoTemplate.find(query, Testimonial.class);
 		if(!t.isEmpty()){
+			LOGGER.info("PUT : "+ "Testimonial record found for given id");
 		testimonial.forEach((key,value)->{
  
             Update update = new Update();
@@ -89,11 +94,13 @@ public class TestimonialDAO {
             mongoTemplate.findAndModify(query, update, Testimonial.class);
             
         });
+			LOGGER.info("PUT : " + "Testimonial updated succesfuully");
 			return true;
 		}
 		else {
+			LOGGER.info("PUT : " + "Testimonial record not found");
 			return false;
-			}
+		}
 	}
 	
 	/*
@@ -105,7 +112,7 @@ public class TestimonialDAO {
 	public void deleteTestimonialById(String id) {
         Query query = new Query(Criteria.where("testimonialId").is(id));
         mongoTemplate.remove(query, Testimonial.class);
-        
+        LOGGER.info("DELETE : " + "Testimonial record deleted successfully");
     }
 	
 	/*
@@ -121,6 +128,7 @@ public class TestimonialDAO {
 		
 		 if (testimonialFilterVO != null) {
 	            if (testimonialFilterVO.getRegion() != null) {
+	            	LOGGER.info("POST : " + "Testimonial record not found ");
 	                query.addCriteria(Criteria.where("region").in(testimonialFilterVO.getRegion()));
 	            }
 	            if (testimonialFilterVO.getTripType() != null) {
