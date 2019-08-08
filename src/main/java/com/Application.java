@@ -21,6 +21,7 @@ import com.pyt.veho.controller.TestimonialsController;
 
 @SpringBootApplication
 @Configuration
+@EnableAutoConfiguration
 @ComponentScan({"com.pyt.veho.application", "com.pyt.veho.controller", "com.pyt.veho.Dao", "com.pyt.veho.Model", "com.pyt.veho.service",
 	"com.pyt.veho.constants","com.pyt.veho.exceptionHandler"})
 public class Application {
