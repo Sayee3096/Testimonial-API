@@ -1543,3 +1543,33 @@ Verify the connector's configuration, identify and stop any process that's liste
 2019-08-07 12:47:15.910  WARN 12184 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.pyt.veho.constants.GenericResponse com.pyt.veho.controller.TestimonialsController.saveTestimonial(com.pyt.veho.model.Testimonial): [Field error in object 'testimonial' on field 'firstName': rejected value []; codes [NotEmpty.testimonial.firstName,NotEmpty.firstName,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [testimonial.firstName,firstName]; arguments []; default message [firstName]]; default message [Provide firstName]] ]
 2019-08-07 14:41:33.534  INFO 12184 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2019-08-07 14:41:33.538  INFO 12184 --- [Thread-8] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:204}] to localhost:27017 because the pool has been closed.
+<<<<<<< Updated upstream
+=======
+=======
+2019-08-08 11:06:50.890  INFO 5698 --- [cluster-ClusterId{value='5d4acde21da1431642d35ec2', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:711, serverValue:1}] to localhost:27017
+2019-08-08 11:06:50.901  INFO 5698 --- [cluster-ClusterId{value='5d4acde21da1431642d35ec2', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 3]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3217763}
+>>>>>>> Stashed changes
+2019-08-08 11:21:57.942  INFO 9932 --- [restartedMain] com.Application                          : Starting Application on Mihirs-MacBook-Pro.local with PID 9932 (/Users/mihir/Desktop/Work/Testimonial-API/target/classes started by mihir in /Users/mihir/Desktop/Work/Testimonial-API)
+2019-08-08 11:21:57.944  INFO 9932 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-08-08 11:21:57.978  INFO 9932 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-08-08 11:21:57.978  INFO 9932 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-08-08 11:21:58.484  INFO 9932 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-08 11:21:59.292  INFO 9932 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 801ms. Found 0 repository interfaces.
+2019-08-08 11:21:59.680  INFO 9932 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-08-08 11:21:59.704  INFO 9932 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-08 11:21:59.704  INFO 9932 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-08-08 11:21:59.775  INFO 9932 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-08 11:21:59.775  INFO 9932 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1797 ms
+2019-08-08 11:22:00.009  INFO 9932 --- [restartedMain] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-08-08 11:22:00.044  INFO 9932 --- [cluster-ClusterId{value='5d4bb8801da14326ccff12b3', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:7}] to localhost:27017
+2019-08-08 11:22:00.049  INFO 9932 --- [cluster-ClusterId{value='5d4bb8801da14326ccff12b3', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 3]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=1819141}
+2019-08-08 11:22:00.373  INFO 9932 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-08 11:22:00.591  INFO 9932 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-08 11:22:00.771  INFO 9932 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-08-08 11:22:00.775  INFO 9932 --- [restartedMain] com.Application                          : Started Application in 3.109 seconds (JVM running for 8.662)
+2019-08-08 11:22:00.777  INFO 9932 --- [restartedMain] c.p.v.controller.TestimonialsController  : Application Started successfully
+2019-08-08 11:22:02.825  INFO 9932 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-08 11:22:02.825  INFO 9932 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-08 11:22:02.833  INFO 9932 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-08-08 11:22:02.872  INFO 9932 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:8}] to localhost:27017
+>>>>>>> Stashed changes
