@@ -11,17 +11,18 @@ package com.pyt.veho.constants;
 import java.util.UUID;
 
 public class ConstantFunctions {
-	 
+
 	/*
 	 * Function Name: GenerateUUID()
 	 * 
-	 * Functionality: This function is used to generate the Unique Universal Identifier to store 
-	 * the data in MongoDB. This function is called for every POST request to add new testimonial.
+	 * Functionality: This function is used to generate the Unique Universal
+	 * Identifier to store the data in MongoDB. This function is called for every
+	 * POST request to add new testimonial.
 	 */
-	
-	public static String GenerateUUID() {
+
+	public static String generateUUID() {
 		UUID uuid = UUID.randomUUID();
 		String testimonialId = uuid.toString();
-	    return testimonialId;
+		return testimonialId;
 	}
 }
