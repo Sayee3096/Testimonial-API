@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pyt.veho.constants.GenericResponse;
+import com.pyt.veho.constants.GenericResponseStatus;
 import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.service.TestimonialService;
 import com.pyt.veho.vo.TestimonialFilterVO;
@@ -53,7 +54,20 @@ public class TestimonialsController {
 
 	@GetMapping("/{id}")
 	public GenericResponse getTestimonialById(@PathVariable String id) {
-		return testimonialService.getTestimonialById(id);
+		GenericResponse genericResponse = new GenericResponse();
+		Testimonial testimonial = testimonialService.getTestimonialById(id);
+		if (testimonial == null) {
+			genericResponse.setStatus(GenericResponseStatus.NOT_FOUND.name());
+			// 404 => for when everything is okay, but the resource doesn’texist.
+			genericResponse.setResponseCode(404);
+			genericResponse.setMessage("No testimonials found for the Id");
+			genericResponse.setData(null);
+		} else {
+			genericResponse.setStatus(GenericResponseStatus.SUCCESS.name());
+			genericResponse.setMessage("Testimonial found for the given Id");
+			genericResponse.setData(testimonial);
+		}
+		return genericResponse;
 	}
 
 	/**
@@ -67,8 +81,16 @@ public class TestimonialsController {
 	@PostMapping
 	public GenericResponse saveTestimonial(@RequestBody @Valid Testimonial testimonial) {
 		GenericResponse genericResponse = new GenericResponse();
-		testimonialService.saveTestimonial(testimonial);
-		genericResponse.setMessage("Testimonial saved successfully");
+		if (testimonialService.saveTestimonial(testimonial)) {
+			genericResponse.setStatus(GenericResponseStatus.SUCCESS.name());
+			genericResponse.setMessage("Testimonial saved successfully");
+		} else {
+			genericResponse.setStatus(GenericResponseStatus.BAD_REQUEST.name());
+			// 400 => for when the requested information is incomplete or malformed.
+			genericResponse.setResponseCode(400);
+			genericResponse.setMessage("Testimonial already exists with the given Id");
+		}
+
 		return genericResponse;
 
 	}
@@ -87,9 +109,15 @@ public class TestimonialsController {
 	@PutMapping("/{id}")
 	public GenericResponse editTestimonial(@RequestBody Map<String, String> testimonial, @PathVariable String id) {
 		GenericResponse genericResponse = new GenericResponse();
-		testimonialService.editTestimonial(testimonial, id);
-		genericResponse.setMessage("Testimonial updated successfully");
-		genericResponse.setData(null);
+		if (testimonialService.editTestimonial(testimonial, id)) {
+			genericResponse.setMessage("Testimonial updated successfully");
+		} else {
+			genericResponse.setStatus(GenericResponseStatus.NOT_FOUND.name());
+			// 404 => for when everything is okay, but the resource doesn’texist.
+			genericResponse.setResponseCode(404);
+			genericResponse.setMessage("No Testimonial record found for given id");
+		}
+
 		return genericResponse;
 
 	}
@@ -108,9 +136,9 @@ public class TestimonialsController {
 
 	@PostMapping("/sort")
 	public List<Testimonial> getSortedTestimonials(@RequestBody TestimonialFilterVO testimonialFilterVO,
-			@RequestParam("offset") int pageNumber, @RequestParam("limit") int pageSize,
+			@RequestParam("offset") int offset, @RequestParam("limit") int limit,
 			@RequestParam("sortby") String sortBy) {
-		return testimonialService.getSortedTestimonials(testimonialFilterVO, pageNumber, pageSize, sortBy);
+		return testimonialService.getSortedTestimonials(testimonialFilterVO, offset, limit, sortBy);
 	}
 
 	/**
@@ -123,7 +151,31 @@ public class TestimonialsController {
 
 	@DeleteMapping("/{id}")
 	public GenericResponse deleteTestimonial(@PathVariable String id) {
-		return testimonialService.deleteTestimonialById(id);
+		GenericResponse genericResponse = new GenericResponse();
+		if (testimonialService.deleteTestimonialById(id)) {
+			genericResponse.setMessage("Testimonial record deleted successfully");
+		} else {
+			genericResponse.setStatus(GenericResponseStatus.NOT_FOUND.name());
+			// 404 => for when everything is okay, but the resource doesn’texist.
+			genericResponse.setResponseCode(404);
+			genericResponse.setMessage("No record found for the Id");
+		}
+		return genericResponse;
 	}
 
+	@PostMapping("/search")
+	public GenericResponse searchTestimonials(@RequestParam("search_name") String query) {
+		GenericResponse genericResponse = new GenericResponse();
+		if (query == null || query.equals("")) {
+			genericResponse.setStatus(GenericResponseStatus.BAD_REQUEST.name());
+			// 400 => for when the requested information is incomplete or malformed.
+			genericResponse.setResponseCode(400);
+			genericResponse.setMessage("Search Query is empty");
+			genericResponse.setData(null);
+		} else {
+			genericResponse.setMessage("Search Results");
+			genericResponse.setData(testimonialService.searchTestimonials(query));
+		}
+		return genericResponse;
+	}
 }

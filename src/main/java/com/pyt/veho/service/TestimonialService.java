@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyt.veho.constants.ConstantFunctions;
-import com.pyt.veho.constants.GenericResponse;
 import com.pyt.veho.dao.TestimonialDAO;
 import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.vo.TestimonialFilterVO;
@@ -38,7 +37,7 @@ public class TestimonialService {
 	 * @return Single testimonial.
 	 */
 
-	public GenericResponse getTestimonialById(String id) {
+	public Testimonial getTestimonialById(String id) {
 		return testimonialDao.getTestimonialById(id);
 	}
 
@@ -50,10 +49,10 @@ public class TestimonialService {
 	 * @param testimonial Testimonial to be saved.
 	 */
 
-	public void saveTestimonial(Testimonial testimonial) {
+	public boolean saveTestimonial(Testimonial testimonial) {
 		String testimonialId = ConstantFunctions.generateUUID();
 		testimonial.setTestimonialId(testimonialId);
-		testimonialDao.saveTestimonial(testimonial);
+		return testimonialDao.saveTestimonial(testimonial);
 	}
 
 	/**
@@ -65,8 +64,9 @@ public class TestimonialService {
 	 * @param id          Id of the testimonial to be updated.
 	 */
 
-	public void editTestimonial(Map<String, String> testimonial, String id) {
-		testimonialDao.editTestimonial(testimonial, id);
+	public boolean editTestimonial(Map<String, String> testimonial, String id) {
+
+		return testimonialDao.editTestimonial(testimonial, id);
 	}
 
 	/**
@@ -81,9 +81,9 @@ public class TestimonialService {
 	 * @return Filtered and sorted Testimonaial with Paging.
 	 */
 
-	public List<Testimonial> getSortedTestimonials(TestimonialFilterVO testimonialFilterVO, int pageNumber,
-			int pageSize, String sortBy) {
-		return testimonialDao.getSortedTestimonials(testimonialFilterVO, pageNumber, pageSize, sortBy);
+	public List<Testimonial> getSortedTestimonials(TestimonialFilterVO testimonialFilterVO, int offset, int limit,
+			String sortBy) {
+		return testimonialDao.getSortedTestimonials(testimonialFilterVO, offset, limit, sortBy);
 	}
 
 	/**
@@ -94,9 +94,13 @@ public class TestimonialService {
 	 * @param id Id of the testimonial to be removed.
 	 */
 
-	public GenericResponse deleteTestimonialById(String id) {
+	public boolean deleteTestimonialById(String id) {
 		return testimonialDao.deleteTestimonialById(id);
 
+	}
+
+	public List<Testimonial> searchTestimonials(String query) {
+		return testimonialDao.searchTestimonials(query);
 	}
 
 }

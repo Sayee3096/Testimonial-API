@@ -2,6 +2,7 @@ package com.pyt.veho.dao;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +17,6 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import com.mongodb.client.result.DeleteResult;
-import com.pyt.veho.constants.GenericResponse;
-import com.pyt.veho.constants.GenericResponseStatus;
 import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.vo.TestimonialFilterVO;
 
@@ -47,9 +46,16 @@ public class TestimonialDAO {
 	 * @param newtestimonial New Testimonial to be saved in DB.
 	 */
 
-	public void saveTestimonial(Testimonial newtestimonial) {
-		mongoTemplate.insert(newtestimonial);
-		LOGGER.info("POST : " + "New Testimonial Saved successfully");
+	public boolean saveTestimonial(Testimonial newTestimonial) {
+		Query query = new Query(Criteria.where("testimonialId").is(newTestimonial.getTestimonialId()));
+		if (!mongoTemplate.exists(query, Testimonial.class)) {
+			mongoTemplate.insert(newTestimonial);
+			LOGGER.info("POST : " + "New Testimonial Saved successfully");
+			return true;
+		} else {
+			LOGGER.info("POST : " + "Testimonial already exists");
+			return false;
+		}
 	}
 
 	/**
@@ -60,22 +66,8 @@ public class TestimonialDAO {
 	 * @return Single Testimonial.
 	 */
 
-	public GenericResponse getTestimonialById(String id) {
-		GenericResponse genericResponse = new GenericResponse();
-		Testimonial testimonial = mongoTemplate.findById(id, Testimonial.class);
-		if (testimonial == null) {
-			LOGGER.info("GET : " + "No record found for the given id ");
-			genericResponse.setStatus(GenericResponseStatus.NOT_FOUND.name());
-			genericResponse.setMessage("No testimonials found for the Id");
-			genericResponse.setData(null);
-		} else {
-			LOGGER.info("GET : " + "Testimonial found for the given Id ");
-			genericResponse.setStatus(GenericResponseStatus.SUCCESS.name());
-			genericResponse.setMessage("Testimonial found ");
-			genericResponse.setData(testimonial);
-		}
-		return genericResponse;
-
+	public Testimonial getTestimonialById(String id) {
+		return mongoTemplate.findById(id, Testimonial.class);
 	}
 
 	/**
@@ -90,14 +82,13 @@ public class TestimonialDAO {
 	public boolean editTestimonial(Map<String, String> testimonial, String id) {
 		Query query = new Query(Criteria.where("testimonialId").is(id));
 		List<Testimonial> t = mongoTemplate.find(query, Testimonial.class);
+		Update update = new Update();
 		if (!t.isEmpty()) {
 			LOGGER.info("PUT : " + "Testimonial record found for given id");
 			testimonial.forEach((key, value) -> {
-				Update update = new Update();
 				update.set(key, value);
-				mongoTemplate.findAndModify(query, update, Testimonial.class);
-
 			});
+			mongoTemplate.findAndModify(query, update, Testimonial.class);
 			LOGGER.info("PUT : " + "Testimonial updated succesfuully");
 			return true;
 		} else {
@@ -113,18 +104,15 @@ public class TestimonialDAO {
 	 * @param id Id of the testimonial to be deleted.
 	 */
 
-	public GenericResponse deleteTestimonialById(String id) {
-		GenericResponse genericResponse = new GenericResponse();
+	public boolean deleteTestimonialById(String id) {
 		Query query = new Query(Criteria.where("testimonialId").is(id));
 		DeleteResult d = mongoTemplate.remove(query, Testimonial.class);
 		if (d.getDeletedCount() == 1) {
 			LOGGER.info("DELETE : " + "Testimonial record deleted successfully");
-			genericResponse.setMessage("Testimonial record deleted successfully");
+			return true;
 		} else {
-			genericResponse.setStatus(GenericResponseStatus.NOT_FOUND.name());
-			genericResponse.setMessage("No record found for the Id");
+			return false;
 		}
-		return genericResponse;
 	}
 
 	/**
@@ -138,35 +126,40 @@ public class TestimonialDAO {
 	 * @return
 	 */
 
-	public List<Testimonial> getSortedTestimonials(TestimonialFilterVO testimonialFilterVO, int pageNumber,
-			int pageSize, String sortBy) {
+	public List<Testimonial> getSortedTestimonials(TestimonialFilterVO testimonialFilterVO, int offset, int limit,
+			String sortBy) {
 		Query query = new Query();
-		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
-
+		Pageable pageable = PageRequest.of(offset, limit, Sort.by(sortBy));
 		if (testimonialFilterVO != null) {
 			if (testimonialFilterVO.getRegion() != null) {
 				LOGGER.info("POST : " + "Testimonial record not found ");
-				query.addCriteria(Criteria.where("region").in(testimonialFilterVO.getRegion()));
+				query.addCriteria(Criteria.where("region").is(testimonialFilterVO.getRegion()));
 			}
 			if (testimonialFilterVO.getTripType() != null) {
-				query.addCriteria(Criteria.where("T_Type").in(testimonialFilterVO.getTripType()));
+				query.addCriteria(Criteria.where("T_Type").is(testimonialFilterVO.getTripType()));
 			}
 			if (testimonialFilterVO.getDepartureCity() != null) {
-				query.addCriteria(Criteria.where("DEP_CITY").in(testimonialFilterVO.getDepartureCity()));
+				query.addCriteria(Criteria.where("DEP_CITY").is(testimonialFilterVO.getDepartureCity()));
 			}
 			if (testimonialFilterVO.getDateOfDeparture() != null) {
-				query.addCriteria(Criteria.where("DEP_DATE").in(testimonialFilterVO.getDateOfDeparture()));
+				query.addCriteria(Criteria.where("DEP_DATE").is(testimonialFilterVO.getDateOfDeparture()));
 			}
 			if (testimonialFilterVO.getStar() != null) {
-				query.addCriteria(Criteria.where("star").in(testimonialFilterVO.getStar()));
+				query.addCriteria(Criteria.where("star").is(testimonialFilterVO.getStar()));
 			}
 			if (testimonialFilterVO.getDestination() != null) {
-				query.addCriteria(Criteria.where("destination").in(testimonialFilterVO.getDestination()));
+				query.addCriteria(Criteria.where("destination").is(testimonialFilterVO.getDestination()));
 			}
 		}
-
 		query.with(pageable);
 		return mongoTemplate.find(query, Testimonial.class);
+	}
+
+	public List<Testimonial> searchTestimonials(String query) {
+		Query search_query = new Query();
+		LOGGER.info("search function entered");
+		search_query.addCriteria(Criteria.where("destination").regex(Pattern.compile(query, Pattern.CASE_INSENSITIVE)));
+		return mongoTemplate.find(search_query, Testimonial.class);
 	}
 
 }
