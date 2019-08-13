@@ -23,7 +23,7 @@ import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.service.TestimonialService;
 import com.pyt.veho.vo.TestimonialFilterVO;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3001 ")
 @RestController
 @RequestMapping("/testimonials")
 public class TestimonialsController {
