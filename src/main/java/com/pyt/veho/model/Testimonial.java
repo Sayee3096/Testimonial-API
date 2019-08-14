@@ -43,6 +43,7 @@ public class Testimonial {
 	private String departureCity;
 
 	@NotNull(message = "Provide Star")
+	// @StarValidation(star = 0, message = "Provide star value less than 3.0")
 	private float star;
 
 	private long timeOfReview;
@@ -52,7 +53,6 @@ public class Testimonial {
 
 	@NotBlank(message = "Provide review")
 	private String review;
-
 	private String facebookLink;
 	private String profileImage;
 	private String coverImage;

@@ -1,7 +1,6 @@
 package com.pyt.veho.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -22,6 +21,7 @@ import com.pyt.veho.constants.GenericResponseStatus;
 import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.service.TestimonialService;
 import com.pyt.veho.vo.TestimonialFilterVO;
+import com.pyt.veho.vo.TestimonialPutRequestMap;
 
 @CrossOrigin(origins = "http://localhost:3001 ")
 @RestController
@@ -107,17 +107,17 @@ public class TestimonialsController {
 	 */
 
 	@PutMapping("/{id}")
-	public GenericResponse editTestimonial(@RequestBody Map<String, String> testimonial, @PathVariable String id) {
+	public GenericResponse editTestimonial(@RequestBody @Valid TestimonialPutRequestMap testimonialMap,
+			@PathVariable String id) {
 		GenericResponse genericResponse = new GenericResponse();
-		if (testimonialService.editTestimonial(testimonial, id)) {
+		if (testimonialService.editTestimonial(testimonialMap.getTestimonialRequestMap(), id)) {
 			genericResponse.setMessage("Testimonial updated successfully");
 		} else {
 			genericResponse.setStatus(GenericResponseStatus.NOT_FOUND.name());
 			// 404 => for when everything is okay, but the resource doesn’texist.
 			genericResponse.setResponseCode(404);
-			genericResponse.setMessage("No Testimonial record found for given id");
+			genericResponse.setMessage("No record found for the Id");
 		}
-
 		return genericResponse;
 
 	}

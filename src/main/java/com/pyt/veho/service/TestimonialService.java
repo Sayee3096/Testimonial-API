@@ -1,7 +1,5 @@
 package com.pyt.veho.service;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyt.veho.constants.ConstantFunctions;
-import com.pyt.veho.constants.GenericResponse;
-import com.pyt.veho.constants.GenericResponseStatus;
 import com.pyt.veho.dao.TestimonialDAO;
 import com.pyt.veho.model.Testimonial;
 import com.pyt.veho.vo.TestimonialFilterVO;
@@ -68,28 +64,8 @@ public class TestimonialService {
 	 * @param id          Id of the testimonial to be updated.
 	 */
 
-	public GenericResponse editTestimonial(Map<String, String> testimonialMap, String id) {
-		GenericResponse genericResponse = new GenericResponse();
-		Map<String, Boolean> testimonialPojo = new HashMap<String, Boolean>();
-		Testimonial testimonial = new Testimonial();
-		Class TestimonialCompare = testimonial.getClass();
-		Field[] testimonialFields = TestimonialCompare.getDeclaredFields();
-		for (Field f : testimonialFields) {
-			testimonialPojo.put(f.getName(), true);
-		}
-		for (String key : testimonialMap.keySet()) {
-			if (testimonialPojo.get(key) == null) {
-				genericResponse.setStatus(GenericResponseStatus.NOT_FOUND.name());
-				// 404 => for when everything is okay, but the resource doesn’texist.
-				genericResponse.setResponseCode(404);
-				genericResponse.setMessage(key + " not found! Enter valid key.");
-				return genericResponse;
-			}
-		}
-		if (testimonialDao.editTestimonial(testimonialMap, id)) {
-			genericResponse.setMessage("Testimonial updated successfully");
-		}
-		return genericResponse;
+	public boolean editTestimonial(Map<String, String> testimonialMap, String id) {
+		return testimonialDao.editTestimonial(testimonialMap, id);
 	}
 
 	/**
